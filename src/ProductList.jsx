@@ -306,7 +306,7 @@ const handlePlantsClick = (e) => {
                             <div className="product-title">{plant.name}</div>
                             <div className="product-description">{plant.description}</div>
                             <div className="product-cost">{plant.cost}</div>
-                            <button  className="product-button" disabled={IsInCart(plant)} onClick={() => handleAddToCart(plant)}>
+                            <button className={IsInCart(plant) ? "product-button.added-to-cart" : "product-button"} disabled={IsInCart(plant)} onClick={() => handleAddToCart(plant)}>
                                 {IsInCart(plant) ? 'In Cart' : 'Add to Cart'}
                                 </button>
                         </div>
