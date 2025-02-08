@@ -254,12 +254,22 @@ const handlePlantsClick = (e) => {
   const [addedToCart, setAddedToCart] = useState({});
   const dispatch = useDispatch();
 
+  // Check if the product is already in the cart
+  const IsInCart = (product) => {
+    const isInCart = addedToCart[product.name] === true;
+    console.log("------is "+product.name+" in cart? "+isInCart)
+    return isInCart;
+  } 
+
   const handleAddToCart = (plantToAdd) => {
-    dispatch(addItem(plantToAdd));
-    setAddedToCart((prevState) => ({
-        ...prevState,
-        [plantToAdd.name]: true,
-    }));
+    if(!IsInCart(plantToAdd))
+    {
+        dispatch(addItem(plantToAdd));
+        setAddedToCart((prevState) => ({
+            ...prevState,
+            [plantToAdd.name]: true,
+        }));
+    }
   };
 
     return (
@@ -296,7 +306,9 @@ const handlePlantsClick = (e) => {
                             <div className="product-title">{plant.name}</div>
                             <div className="product-description">{plant.description}</div>
                             <div className="product-cost">{plant.cost}</div>
-                            <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                            <button  className="product-button" disabled={IsInCart(plant)} onClick={() => handleAddToCart(plant)}>
+                                {IsInCart(plant) ? 'In Cart' : 'Add to Cart'}
+                                </button>
                         </div>
                         ))}
                     </div>
