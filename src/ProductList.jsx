@@ -248,7 +248,9 @@ const handlePlantsClick = (e) => {
 };
 
    const handleContinueShopping = (e) => {
-    e.preventDefault();
+    // This was causing errors for some reason, so I commented it out. 
+    //e.preventDefault();
+
     setShowCart(false);
   };
 
