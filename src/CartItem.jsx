@@ -55,6 +55,8 @@ const CartItem = ({ onContinueShopping }) => {
     return trimmedCost * item.quantity;
   };
 
+  console.log("------updating the cart. Cart size "+cart.length)
+
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>

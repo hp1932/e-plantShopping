@@ -24,11 +24,12 @@ export const CartSlice = createSlice({
         console.log("-----actually removing item");
         const {name} = action.payload;
         const existingItem = state.items.find(item => item.name === name);
-        state.items = state.items.filter(item => item.name !== action.payload);
+        state.items = state.items.filter(item => item.name !== name);
         console.log("after remove. Item arr len: "+state.items.length);
-        
-        let diff = state.totalCartItems - existingItem.quantity;
-        state.totalCartItems = diff >= 0 ? diff : 0;
+        if (existingItem) {
+            let diff = state.totalCartItems - existingItem.quantity;
+            state.totalCartItems = diff >= 0 ? diff : 0;
+        }
         console.log("------rem totalCartItems "+state.totalCartItems);
 
     },
