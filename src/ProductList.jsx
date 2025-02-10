@@ -260,7 +260,6 @@ const handlePlantsClick = (e) => {
   // Check if the product is already in the cart
   const IsInCart = (product) => {
     const isInCart = addedToCart[product.name] === true;
-    console.log("------is "+product.name+" in cart? "+isInCart)
     return isInCart;
   } 
 

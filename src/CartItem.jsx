@@ -12,9 +12,7 @@ const CartItem = ({ onContinueShopping }) => {
     let totalCost = 0;
     cart.forEach((item) => {
         let trimmedCost = item.cost.slice(1);
-        console.log("------calc total amt. cost: "+ trimmedCost + " quan: "+item.quantity)
         totalCost += trimmedCost * item.quantity;
-        console.log("----the total cost is thus "+totalCost)
     });
     return totalCost;
   };
@@ -44,18 +42,15 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleRemove = (item) => {
-    console.log("----removing item");
     dispatch(removeItem(item))
   };
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
     let trimmedCost = item.cost.slice(1);
-    console.log("---item cost: "+trimmedCost + " item quan: "+item.quantity + " total: "+(item.cost * item.quantity))
     return trimmedCost * item.quantity;
   };
 
-  console.log("------updating the cart. Cart size "+cart.length)
 
   return (
     <div className="cart-container">
